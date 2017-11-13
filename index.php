@@ -5,6 +5,7 @@ define('ROOT', dirname(__FILE__));  //root of content serviced by filemanager
 
 require_once ROOT. DS. 'Classes'. DS .'Entity.php';
 require_once ROOT. DS. 'Classes'. DS .'File.php';
+require_once ROOT. DS. 'Classes'. DS .'Helper.php';
 
 $list = scandir(ROOT); //list of content items
 ?>

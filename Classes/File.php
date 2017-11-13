@@ -19,7 +19,7 @@ class File extends Entity
     /**return array**/
     public function getTeaser()
     {
-        return ['name' => $this->name, 'size' => $this->size];
+        return ['name' => $this->name, 'size' => Helper::formatSize($this->size)];
     }
 
     /**return array**/
