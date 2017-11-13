@@ -6,6 +6,7 @@ define('ROOT', dirname(__FILE__));  //root of content serviced by filemanager
 require_once ROOT. DS. 'Classes'. DS .'Entity.php';
 require_once ROOT. DS. 'Classes'. DS .'File.php';
 require_once ROOT. DS. 'Classes'. DS .'Helper.php';
+require_once ROOT. DS. 'Classes'. DS .'Folder.php';
 
 $list = scandir(ROOT); //list of content items
 ?>
@@ -27,7 +28,7 @@ $list = scandir(ROOT); //list of content items
         <?php foreach ($list as $item):
 
             $fullPath = ROOT. DS. $item;
-            $object = is_file($fullPath) ? new File($fullPath) : '---';
+            $object = is_file($fullPath) ? new File($fullPath) : new Folder($fullPath);
             if($object instanceof File)
             {
                 $data = $object->getTeaser();
@@ -35,6 +36,13 @@ $list = scandir(ROOT); //list of content items
                     <span class=\"glyphicon glyphicon-file\">" . $data['name'] . "</span>
                     <span class=\"badge badge-primary badge-pill\">" . $data['size'] . "</span>
                 </li>";
+            }
+            else if($object instanceof Folder)
+            {
+                $data = $object->getTeaser();
+                echo"<li class=\"list-group-item d-flex justify-content-between align-items-center\">
+                <span class=\"glyphicon glyphicon-folder-open\"></span>
+                ".$data['name']."</li>";
             }
 
             endforeach;
