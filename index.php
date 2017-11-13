@@ -9,4 +9,5 @@ foreach ($list as $item):
     echo $item."\n";
 endforeach;
 
+
 ?>
