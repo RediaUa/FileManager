@@ -12,7 +12,7 @@ abstract class Entity
 
     }
 
-    abstract public function showContent();
+    abstract public function getContent();
 
-    abstract public function showTeaser();
+    abstract public function getTeaser();
 }
