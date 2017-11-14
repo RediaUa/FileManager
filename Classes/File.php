@@ -17,17 +17,31 @@ class File extends Entity
     }
 
     /**return array**/
-    public function getTeaser()
+    protected function getTeaser()
     {
         return ['name' => $this->name, 'size' => Helper::formatSize($this->size)];
     }
 
     /**return array**/
-    public function getContent()
+    protected function getContent()
     {
         $result = $this->getTeaser();//add name, size
         $result['type'] = $this->type;
         $result['path'] = $this->path;
         return $result;
+    }
+
+    public function showTeaser()
+    {
+        $data = $this->getTeaser();
+        echo "<li class=\"list-group-item d-flex justify-content-between align-items-center\">
+                    <span class=\"glyphicon glyphicon-file\">" . $data['name'] . "</span>
+                    <span class=\"badge badge-primary badge-pill\">" . $data['size'] . "</span>
+                </li>";
+    }
+
+    public function showContent()
+    {
+        $data = $this->getContent();
     }
 }

@@ -7,10 +7,10 @@ require_once ROOT. DS. 'Classes'. DS .'Entity.php';
 require_once ROOT. DS. 'Classes'. DS .'File.php';
 require_once ROOT. DS. 'Classes'. DS .'Helper.php';
 require_once ROOT. DS. 'Classes'. DS .'Folder.php';
+require_once ROOT. DS. 'Classes'. DS .'FilteredFileList.php';
 
-$list = scandir(ROOT); //list of content items
+
 ?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -25,33 +25,11 @@ $list = scandir(ROOT); //list of content items
 <body>
 <ul class="list-group">
 
-        <?php foreach ($list as $item):
-
-            $fullPath = ROOT. DS. $item;
-            $object = is_file($fullPath) ? new File($fullPath) : new Folder($fullPath);
-            if($object instanceof File)
-            {
-                $data = $object->getTeaser();
-                echo "<li class=\"list-group-item d-flex justify-content-between align-items-center\">
-                    <span class=\"glyphicon glyphicon-file\">" . $data['name'] . "</span>
-                    <span class=\"badge badge-primary badge-pill\">" . $data['size'] . "</span>
-                </li>";
-            }
-            else if($object instanceof Folder)
-            {
-                $data = $object->getTeaser();
-                echo"<li class=\"list-group-item d-flex justify-content-between align-items-center\">
-                <span class=\"glyphicon glyphicon-folder-open\"></span>
-                ".$data['name']."</li>";
-            }
-
-            endforeach;
-            ?>
-
-
-
-
-
+<?php
+$base = !empty($_GET['entry']) ? urldecode($_GET['entry']) : ROOT;
+$entryFolder = new Folder($base);
+$entryFolder->showContent();
+?>
 </ul>
 </body>
 </html>
