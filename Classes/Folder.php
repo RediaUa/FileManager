@@ -5,7 +5,7 @@
  * Date: 13.11.17
  * Time: 18:29
  */
-
+namespace mindkey;
 class Folder extends Entity
 {
     /**
@@ -37,7 +37,7 @@ class Folder extends Entity
 
                 $buffer[] = $object;
             }
-            $this->children = new FilteredFilelist($buffer);
+            $this->children = new FilteredFileList($buffer);
 
         }
 

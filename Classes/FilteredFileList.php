@@ -5,12 +5,12 @@
  * Date: 14.11.17
  * Time: 19:09
  */
-
-class FilteredFileList extends FilterIterator
+namespace mindkey;
+class FilteredFileList extends \FilterIterator
 {
     public function __construct(array $items)
     {
-        parent::__construct(new ArrayIterator($items));
+        parent::__construct(new \ArrayIterator($items));
     }
 
     public function accept()

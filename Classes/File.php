@@ -1,5 +1,5 @@
 <?php
-
+namespace mindkey;
 class File extends Entity
 {
     public $type;

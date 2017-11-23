@@ -5,7 +5,7 @@
  * Date: 13.11.17
  * Time: 18:04
  */
-
+namespace mindkey;
 class Helper
 {
     public static function formatSize($size):string

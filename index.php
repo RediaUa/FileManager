@@ -1,14 +1,11 @@
 <?php
+namespace mindkey;
 //General settings
 define('DS', '/');
 define('ROOT', dirname(__FILE__));  //root of content serviced by filemanager
 
-require_once ROOT. DS. 'Classes'. DS .'Entity.php';
-require_once ROOT. DS. 'Classes'. DS .'File.php';
-require_once ROOT. DS. 'Classes'. DS .'Helper.php';
-require_once ROOT. DS. 'Classes'. DS .'Folder.php';
-require_once ROOT. DS. 'Classes'. DS .'FilteredFileList.php';
-
+$loader = require_once __DIR__.'/Classes/Autoloader.php';
+$loader->addNamspacePath('mindkey', __DIR__.'/Classes/');
 
 ?>
 <!doctype html>
@@ -27,7 +24,7 @@ require_once ROOT. DS. 'Classes'. DS .'FilteredFileList.php';
 
 <?php
 $base = !empty($_GET['entry']) ? urldecode($_GET['entry']) : ROOT;
-$entryFolder = new Folder($base);
+$entryFolder = new \mindkey\Folder($base);
 $entryFolder->showContent();
 ?>
 </ul>

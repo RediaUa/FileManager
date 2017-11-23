@@ -1,5 +1,5 @@
 <?php
-
+namespace mindkey;
 /**class which consist common properties of file and folder**/
 abstract class Entity
 {
